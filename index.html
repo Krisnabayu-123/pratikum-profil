@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Lord | Profil Krisna</title>
+    <style>
+        :root {
+            --bg: #08090f;
+            --panel: #11131b;
+            --panel-soft: #151823;
+            --purple: #4937d4;
+            --purple-light: #a5b4fc;
+            --text: #f8fafc;
+            --muted: #8b95a8;
+            --border: rgba(148, 163, 184, 0.16);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text);
+            background:
+                radial-gradient(ellipse at 10% 0%, rgba(79, 70, 229, 0.13), transparent 35%),
+                radial-gradient(ellipse at 100% 70%, rgba(67, 56, 202, 0.08), transparent 32%),
+                var(--bg);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        .container {
+            width: min(90%, 1200px);
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(8, 9, 15, 0.88);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(18px);
+        }
+        .header-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+        }
+        .nama {
+            color: var(--text);
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            transition: color 0.3s ease;
+        }
+        .nama:hover {
+            color: var(--purple-light);
+        }
+        nav ul {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+        nav a {
+            display: block;
+            padding: 10px 16px;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.3s ease;
+        }
+        nav a:hover {
+            color: white;
+            background: rgba(79, 70, 229, 0.18);
+            border-color: rgba(129, 140, 248, 0.28);
+            transform: translateY(-2px);
+        }
+
+        /* PROFIL */
+
+        .hero {
+            width: min(90%, 1200px);
+            min-height: 390px;
+            margin: 58px auto 90px;
+            padding: 52px;
+            display: flex;
+            align-items: center;
+            gap: 52px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, #151720 0%, #101116 60%, #12141d 100%);
+            border: 1px solid var(--border);
+            border-radius: 34px;
+        }
+        .hero::after {
+            content: "RPL";
+            position: absolute;
+            right: -10px;
+            bottom: -64px;
+            color: rgba(255, 255, 255, 0.025);
+            font-size: clamp(90px, 17vw, 210px);
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -8px;
+            pointer-events: none;
+        }
+        .hero>img {
+            width: 230px;
+            height: 230px;
+            flex: 0 0 230px;
+            object-fit: cover;
+            border-radius: 120px;
+            border: 1px solid rgba(165, 180, 252, 0.35);
+            box-shadow: 0 18px 55px rgba(79, 70, 229, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        .hero-copy {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+        .hero-copy::before {
+            content: "RPL • PROFILE / 25";
+            display: block;
+            margin-bottom: 18px;
+            color: var(--purple-light);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 4px;
+        }
+        .hero-copy h1 {
+            margin-bottom: 18px;
+            color: var(--text);
+            font-size: clamp(32px, 4vw, 52px);
+            line-height: 1.12;
+            letter-spacing: -2px;
+        }
+        .hero-copy p {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        /* KEAHLIAN DAN PORTOFOLIO */
+
+        .skills,
+        .gallery {
+            width: min(90%, 1200px);
+            margin: 90px auto;
+        }
+        .skills h2,
+        .gallery h2 {
+            margin-bottom: 34px;
+            color: var(--text);
+            font-size: clamp(30px, 4vw, 42px);
+            letter-spacing: -1.5px;
+            text-align: left;
+        }
+        .skills h2::before,
+        .gallery h2::before {
+            content: "SYSTEM / ";
+            color: var(--purple-light);
+            font-size: 11px;
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        /* KARTU KEAHLIAN */
+
+        .skills>.card {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+        .skills article.card {
+            min-height: 220px;
+            padding: 30px;
+            background: linear-gradient(145deg, #151720, #101116);
+            border: 1px solid var(--border);
+            border-radius: 26px;
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .skills article.card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(129, 140, 248, 0.5);
+            box-shadow: 0 22px 50px rgba(0, 0, 0, 0.28);
+        }
+        .skills article.card h3 {
+            margin-bottom: 12px;
+            color: var(--purple-light);
+            font-size: 25px;
+        }
+        .skills article.card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+        /* GALERI PORTOFOLIO */
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+        .gallery figure {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(145deg, #151720, #101116);
+            border: 1px solid var(--border);
+            border-radius: 26px;
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .gallery figure:hover {
+            transform: translateY(-7px);
+            border-color: rgba(129, 140, 248, 0.5);
+            box-shadow: 0 22px 50px rgba(0, 0, 0, 0.3);
+        }
+        .gallery figure img {
+            display: block;
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            background: var(--panel-soft);
+            transition: transform 0.5s ease;
+        }
+        .gallery figure:hover img {
+            transform: scale(1.04);
+        }
+        .gallery figcaption {
+            min-height: 76px;
+            padding: 20px;
+            color: var(--text);
+            background: transparent;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        /* FOOTER */
+
+        .site-footer {
+            margin-top: 100px;
+            padding: 35px 20px;
+            border-top: 1px solid var(--border);
+            background: #0b0c12;
+            color: var(--muted);
+            text-align: center;
+        }
+        .site-footer p {
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 800px) {
+            .header-inner {
+                flex-direction: column;
+                justify-content: center;
+                padding: 16px 0;
+                gap: 10px;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 38px 28px;
+                gap: 28px;
+            }
+            .hero>img {
+                width: 200px;
+                height: 200px;
+                flex-basis: 200px;
+            }
+            .hero-copy h1 {
+                font-size: 36px;
+            }
+            .skills>.card,
+            .gallery-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* HP */
+
+        @media (max-width: 520px) {
+            .nama {
+                font-size: 18px;
+                text-align: center;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2px;
+            }
+            nav a {
+                padding: 8px 10px;
+                font-size: 13px;
+            }
+            .hero {
+                margin: 35px auto 65px;
+                padding: 30px 20px;
+                border-radius: 26px;
+            }
+            .hero>img {
+                width: 160px;
+                height: 160px;
+                flex-basis: 160px;
+                border-radius: 22px;
+            }
+            .hero-copy h1 {
+                font-size: 29px;
+                letter-spacing: -1px;
+            }
+            .hero-copy p {
+                font-size: 14px;
+            }
+            .skills,
+            .gallery {
+                margin: 65px auto;
+            }
+            .skills>.card,
+            .gallery-container {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .skills article.card {
+                min-height: 0;
+                padding: 25px;
+            }
+            .gallery figure img {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="nama">
+                Krisna Bayu Pratama
+            </div>
+            <nav aria-label="Navigasi Utama">
+                <ul>
+                    <li>
+                        <a href="#tentang">Tentang</a>
+                    </li>
+                    <li>
+                        <a href="#keahlian">Keahlian</a>
+                    </li>
+                    <li>
+                        <a href="#portofolio">Portofolio</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- KONTEN -->
+    <main>
+        <!-- TENTANG -->
+        <section id="tentang" class="hero">
+            <img src="img/foto-profil.jpg" alt="Foto Profil">
+            <div class="hero-copy">
+                <h1>Krisna Bayu Pratama</h1>
+                <p>
+                    Perkenalkan, saya adalah seorang siswa dari jurusan
+                    RPL (Rekayasa Perangkat Lunak) yang bercita-cita menjadi
+                    pengembang web profesional. Saya menguasai beberapa
+                    bahasa pemrograman dan teknologi web terkini seperti
+                    HTML, CSS, Python, dan JavaScript dasar.
+                </p>
+            </div>
+        </section>
+
+        <!-- KEAHLIAN -->
+        <section id="keahlian" class="skills">
+            <h2>Keahlian</h2>
+            <div class="card">
+                <article class="card">
+                    <h3>HTML</h3>
+                    <p>
+                        Memahami struktur dan semantik HTML untuk membuat
+                        halaman web yang baik.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3>CSS</h3>
+                    <p>
+                        Mampu merancang tata letak dan desain visual yang
+                        menarik menggunakan CSS.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3>JavaScript</h3>
+                    <p>
+                        Memiliki kemampuan untuk menciptakan interaksi
+                        dinamis dan fungsionalitas dengan JavaScript.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- PORTOFOLIO -->
+        <section id="portofolio" class="gallery">
+            <h2>Portofolio</h2>
+            <div class="gallery-container">
+                <figure>
+                    <img src="img/portofolio 1.png" alt="Proyek 1">
+                    <figcaption>
+                        Proyek 1: Desain Website Statis Dancow
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="img/portofolio 2.png" alt="Proyek 2">
+                    <figcaption>
+                        Proyek 2: Aplikasi Game Snake
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="img/portofolio 3.png" alt="Proyek 3">
+                    <figcaption>
+                        Proyek 3: Pygame Pergerakan Mobil Sederhana
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>
+            &copy; 2024 Krisna Bayu Pratama.
+            Semua hak dilindungi. SMK Brantas Karangkates
+        </p>
+    </footer>
+</body>
+</html>
